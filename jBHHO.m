@@ -1,24 +1,4 @@
-%-------------------------------------------------------------------------%
-%  Binary Harris Hawk Optimization (BHHO) source codes demo version       %
-%                                                                         %
-%  Programmer: Jingwei Too                                                %
-%                                                                         %
-%  E-Mail: jamesjames868@gmail.com                                        %
-%-------------------------------------------------------------------------%
-
-function [sFeat,Sf,Nf,curve]=jBHHO(feat,label,N,T)
-%---Inputs-----------------------------------------------------------------
-% feat:   features
-% label:  labelling
-% N:      Number of particles
-% T:      Maximum number of iterations
-%---Outputs----------------------------------------------------------------
-% sFeat:  Selected features
-% Sf:     Selected feature index
-% Nf:     Number of selected features
-% curve:  Convergence curve
-%--------------------------------------------------------------------------
-
+function [sFeat,Sf,Nf,curve]=jBHHO(feat,label,N,T,HO)
 
 fun=@jFitnessFunction; 
 D=size(feat,2); X=zeros(N,D); 
@@ -31,12 +11,10 @@ for i=1:N
 end
 fitR=inf; fit=zeros(1,N); Y=zeros(1,D); Z=zeros(1,D);
 beta=1.5; ub=1; lb=0; t=1; curve=inf;  
-figure(1); clf; axis([1 100 0 0.2]); xlabel('Number of iterations');
-ylabel('Fitness Value'); title('Convergence Curve'); grid on;
 %---Iteration start-------------------------------------------------------
 while t <= T
   for i=1:N
-    fit(i)=fun(feat,label,X(i,:));
+    fit(i)=fun(feat,label,X(i,:),HO);
     if fit(i) < fitR
       fitR=fit(i); Xrb=X(i,:);
     end
@@ -112,7 +90,7 @@ while t <= T
             Z(d)=0;
           end
         end
-        fitY=fun(feat,label,Y); fitZ=fun(feat,label,Z);
+        fitY=fun(feat,label,Y,HO); fitZ=fun(feat,label,Z,HO);
         if fitY <= fit(i)
           fit(i)=fitY; X(i,:)=Y;
         end
@@ -137,7 +115,7 @@ while t <= T
             Z(d)=0;
           end
         end
-        fitY=fun(feat,label,Y); fitZ=fun(feat,label,Z);
+        fitY=fun(feat,label,Y,HO); fitZ=fun(feat,label,Z,HO);
         if fitY <= fit(i)
           fit(i)=fitY; X(i,:)=Y;
         end
@@ -148,8 +126,7 @@ while t <= T
     end
   end
   curve(t)=fitR; 
-  pause(1e-20); hold on;
-  CG=plot(t,fitR,'Color','r','Marker','.'); set(CG,'MarkerSize',5);
+  fprintf('\nIteration %d Best (BHHO)= %f',t,curve(t))
   t=t+1;
 end
 Pos=1:D; Sf=Pos(Xrb==1); Nf=length(Sf); sFeat=feat(:,Sf); 
