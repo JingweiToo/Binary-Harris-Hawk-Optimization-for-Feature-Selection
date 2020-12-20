@@ -42,7 +42,6 @@ plot(1:max_Iter,curve);
 xlabel('Number of iterations');
 ylabel('Fitness Value');
 title('BHHO'); grid on;
-
 ```
 
 ## Requirement
@@ -62,7 +61,6 @@ title('BHHO'); grid on;
   year={2019},
   publisher={Multidisciplinary Digital Publishing Institute}
 }
-
 ```
 
 
