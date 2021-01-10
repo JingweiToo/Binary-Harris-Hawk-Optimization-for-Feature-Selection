@@ -1,24 +1,28 @@
 # Binary Harris Hawk Optimization for Feature Selection
 
+[![View Binary Harris Hawk Optimization for Feature Selection on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/78534-binary-harris-hawk-optimization-for-feature-selection)
+[![License](https://img.shields.io/badge/license-BSD_3-yellow.svg)](https://github.com/JingweiToo/Binary-Harris-Hawk-Optimization-for-Feature-Selection/blob/master/LICENSE)
+[![GitHub release](https://img.shields.io/badge/release-1.3-green.svg)](https://github.com/JingweiToo/Binary-Harris-Hawk-Optimization-for-Feature-Selection)
+
 ![Wheel](https://www.mathworks.com/matlabcentral/mlc-downloads/downloads/7cf53ce5-1104-490a-97a7-b86aa2b1c17d/f5d1aef5-e893-4569-92ca-b269d967dd77/images/1595488674.JPG)
 
 
 ## Introduction
 * This toolbox offers Binary Harris Hawk Optimization ( BHHO )  
-* The < Main.m file > illustrates the example of how BHHO can solve the feature selection problem using benchmark data-set. 
+* The `Main` file illustrates the example of how BHHO can solve the feature selection problem using benchmark data-set. 
 
 ## Input
-* *feat*     : feature vector ( Instances *x* Features )
-* *label*    : label vector ( Instances *x* 1 )
-* *N*        : number of hawks
-* *max_Iter* : maximum number of iterations
+* *`feat`*     : feature vector ( Instances *x* Features )
+* *`label`*    : label vector ( Instances *x* 1 )
+* *`N`*        : number of hawks
+* *`max_Iter`* : maximum number of iterations
 
 
 ## Output
-* *sFeat*    : selected features
-* *Sf*       : selected feature index
-* *Nf*       : number of selected features
-* *curve*    : convergence curve
+* *`sFeat`*    : selected features
+* *`Sf`*       : selected feature index
+* *`Nf`*       : number of selected features
+* *`curve`*    : convergence curve
 
 
 ### Example
